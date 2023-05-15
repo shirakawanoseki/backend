@@ -1,0 +1,349 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ML Backend Technical Challenge",
+        "description": "ML Backend Technical Challenge",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/movies/add": {
+            "post": {
+                "tags": [
+                    "Movie Master"
+                ],
+                "summary": "Add movies master information",
+                "description": "Add movies master information",
+                "operationId": "Add movies master information",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "description": "Title of movie to add",
+                                        "type": "string"
+                                    },
+                                    "genre": {
+                                        "description": "Gnenre of movie to add",
+                                        "type": "string"
+                                    },
+                                    "year": {
+                                        "description": "Production year of movie to add",
+                                        "type": "integer"
+                                    },
+                                    "description": {
+                                        "description": "Detailed description of movie to add",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response at normal termination",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "description": "Execution result",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/movies": {
+            "get": {
+                "tags": [
+                    "Movie Master"
+                ],
+                "summary": "Search movies by keyword",
+                "description": "Search movies by keyword",
+                "operationId": "Search movies by keyword",
+                "parameters": [
+                    {
+                        "name": "keyword",
+                        "in": "query",
+                        "description": "Keyword to search for movies!",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response at normal termination",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "Movie ID",
+                                            "type": "integer"
+                                        },
+                                        "title": {
+                                            "description": "Title of movie",
+                                            "type": "string"
+                                        },
+                                        "genre": {
+                                            "description": "Genre of movie",
+                                            "type": "string"
+                                        },
+                                        "year": {
+                                            "description": "Production year of movie",
+                                            "type": "integer"
+                                        },
+                                        "description": {
+                                            "description": "Detailed deacription of movie",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/movies/{id}": {
+            "get": {
+                "tags": [
+                    "Movie Master"
+                ],
+                "summary": "Search movies by Movie ID",
+                "description": "Search movies by Movie ID",
+                "operationId": "Search movies by Movie ID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Movie ID to search for movies!",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response at normal termination",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "Movie ID",
+                                            "type": "integer"
+                                        },
+                                        "title": {
+                                            "description": "Title of movie",
+                                            "type": "string"
+                                        },
+                                        "genre": {
+                                            "description": "Genre of movie",
+                                            "type": "string"
+                                        },
+                                        "year": {
+                                            "description": "Production year of movie",
+                                            "type": "integer"
+                                        },
+                                        "description": {
+                                            "description": "Detailed deacription of movie",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/users/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Register user",
+                "description": "Register user",
+                "operationId": "Register user",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "description": "ID of user to add",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "User's password",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response at normal termination",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "description": "Execution result",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/favorites": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get movies favorited by user",
+                "description": "Get movies favorited by user",
+                "operationId": "Get movies favorited by user",
+                "responses": {
+                    "200": {
+                        "description": "Response at normal termination",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "Movie ID",
+                                            "type": "integer"
+                                        },
+                                        "title": {
+                                            "description": "Title of movie",
+                                            "type": "string"
+                                        },
+                                        "genre": {
+                                            "description": "Genre of movie",
+                                            "type": "string"
+                                        },
+                                        "year": {
+                                            "description": "Production year of movie",
+                                            "type": "integer"
+                                        },
+                                        "description": {
+                                            "description": "Detailed deacription of movie",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Mark movie as user's favorite",
+                "description": "Mark movie as user's favorite",
+                "operationId": "Check movie as user's favorite",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "description": "User ID",
+                                        "type": "string"
+                                    },
+                                    "m_movie_id": {
+                                        "description": "Movie ID",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "User's password",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response at normal termination",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "Movie ID",
+                                            "type": "integer"
+                                        },
+                                        "title": {
+                                            "description": "Title of movie",
+                                            "type": "string"
+                                        },
+                                        "genre": {
+                                            "description": "Genre of movie",
+                                            "type": "string"
+                                        },
+                                        "year": {
+                                            "description": "Production year of movie",
+                                            "type": "integer"
+                                        },
+                                        "description": {
+                                            "description": "Detailed deacription of movie",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }
+    }
+}
